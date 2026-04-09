@@ -10,7 +10,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': path.resolve('./src'),  // ✅ __dirname ki zaroorat nahi
+      '@': path.resolve('./src'),
     },
   },
   assetsInclude: ['**/*.svg', '**/*.csv'],
@@ -18,6 +18,7 @@ export default defineConfig({
     outDir: 'dist',
     chunkSizeWarningLimit: 1600,
     rollupOptions: {
+      external: ['fsevents'],  // ✅ Yeh add kiya
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
